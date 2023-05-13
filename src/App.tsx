@@ -6,7 +6,8 @@ import {
     AccordionIcon,
     Box,
     Button,
-    Tabs, TabList, TabPanels, Tab, TabPanel
+    Tabs, TabList, TabPanels, Tab, TabPanel,
+    Grid, GridItem
 } from '@chakra-ui/react'
 import { useState, useEffect } from 'react';
 import './App.scss';
@@ -275,6 +276,7 @@ function App() {
     const [count, setCount] = useState(0);
     const [messages, setMessages] = useState([]);
     const [advancedMode, setAdvancedMode] = useState(false);
+    const [editEnv, setEditEnv] = useState(false);
     const [tasks, setTasks] = useState(sample_tasks);
     const [skills, setSkills] = useState(sample_skills);
 
@@ -361,176 +363,185 @@ function App() {
 
     return (
         <div className='App'>
-            <h2>Do anything 😎</h2>
+            <Grid
+                templateRows='repeat(2, 1fr)'
+                templateColumns='repeat(5, 1fr)'
+                gap={4}
+            >
+                <GridItem rowSpan={2} colSpan={1} bg='green'>
 
-            {/*<Update />*/}
-
-            <div className='chat-window'>
-                {messages.map((message:any, index) => (
-                    <div key={index} className={`message ${message.sender}`}>
-                        <p>{message.sender}:  {message.text}</p>
+                </GridItem>
+                {/*<GridItem colSpan={2} bg='papayawhip' ></GridItem>*/}
+                {/*<GridItem colSpan={2} bg='papayawhip' ></GridItem>*/}
+                <GridItem colSpan={4}  >
+                    <h2>Do anything 😎</h2>
+                    <div className='chat-window'>
+                        {messages.map((message:any, index) => (
+                            <div key={index} className={`message ${message.sender}`}>
+                                <p>{message.sender}:  {message.text}</p>
+                            </div>
+                        ))}
                     </div>
-                ))}
-            </div>
 
-            <div className='input-box'>
-                <input type='text' placeholder='Type a message...' onKeyPress={(event) => {
-                    if (event.key === 'Enter') {
-                        // @ts-ignore
-                        sendMessage(event.target.value);
-                        // @ts-ignore
-                        event.target.value = '';
-                    }
-                }} />
-                <button onClick={() => {
-                    const input = document.querySelector('input[type="text"]');
-                    // @ts-ignore
-                    sendMessage(input.value);
-                    // @ts-ignore
-                    input.value = '';
-                }}>Send</button>
-            </div>
-            {advancedMode ? (
-                <div>
-                    Advanced mode on
-                    <Tabs>
-                        <TabList>
-                            <Tab>Tasks</Tab>
-                            <Tab>Skills</Tab>
-                            <Tab>Solutions</Tab>
-                        </TabList>
+                    <div className='input-box'>
+                        <input type='text' placeholder='Type a message...' onKeyPress={(event) => {
+                            if (event.key === 'Enter') {
+                                // @ts-ignore
+                                sendMessage(event.target.value);
+                                // @ts-ignore
+                                event.target.value = '';
+                            }
+                        }} />
+                        <button onClick={() => {
+                            const input = document.querySelector('input[type="text"]');
+                            // @ts-ignore
+                            sendMessage(input.value);
+                            // @ts-ignore
+                            input.value = '';
+                        }}>Send</button>
+                    </div>
+                </GridItem>
+                <GridItem colSpan={4} style={{ display: 'flex', alignItems: 'flex-end' }} >
+                    {advancedMode ? (
+                        <div>
+                            Advanced mode on
+                            <Tabs>
+                                <TabList>
+                                    <Tab>Tasks</Tab>
+                                    <Tab>Skills</Tab>
+                                    <Tab>Solutions</Tab>
+                                </TabList>
 
-                        <TabPanels>
-                            <TabPanel>
-                                <p>Tasks!</p>
+                                <TabPanels>
+                                    <TabPanel>
+                                        <p>Tasks!</p>
 
-                                <Accordion>
-                                    {tasks.map((task) => (
-                                        <AccordionItem key={task._id.$oid}>
-                                            <h2>
-                                                <AccordionButton>
-                                                    <h2>TaskId: </h2><small><Box as="span" flex='1' textAlign='left'>{task.taskId}</Box></small>
-                                                    <Button onClick={() => editTask(task._id.$oid)}>Edit Task</Button>
-                                                    <Button onClick={() => removeTask(task._id.$oid)}>Remove Task</Button>
-                                                    <Button onClick={() => solveTask(task._id.$oid)}>Solve Task</Button>
-                                                    <AccordionIcon />
-                                                </AccordionButton>
-                                            </h2>
-                                            <AccordionPanel pb={4}>
-                                                {task.summary}
+                                        <Accordion>
+                                            {tasks.map((task) => (
+                                                <AccordionItem key={task._id.$oid}>
+                                                    <h2>
+                                                        <AccordionButton>
+                                                            <h2>TaskId: </h2><small><Box as="span" flex='1' textAlign='left'>{task.taskId}</Box></small>
+                                                            <Button onClick={() => editTask(task._id.$oid)}>Edit Task</Button>
+                                                            <Button onClick={() => removeTask(task._id.$oid)}>Remove Task</Button>
+                                                            <Button onClick={() => solveTask(task._id.$oid)}>Solve Task</Button>
+                                                            <AccordionIcon />
+                                                        </AccordionButton>
+                                                    </h2>
+                                                    <AccordionPanel pb={4}>
+                                                        {task.summary}
 
-                                                <Accordion allowToggle>
-                                                    {task.steps.map((step) => (
-                                                        <AccordionItem key={step.type}>
-                                                            <h2>
-                                                                <AccordionButton>
-                                                                    <Box as="span" flex='1' textAlign='left'>{step.type}</Box>
-                                                                    <AccordionIcon />
-                                                                </AccordionButton>
-                                                            </h2>
-                                                            <AccordionPanel pb={4}>
-                                                                {step.summary}
-                                                                <Button onClick={() => editStep(task._id.$oid, step.type)}>Edit Step</Button>
-                                                                <Button onClick={() => removeStep(task._id.$oid, step.type)}>Remove Step</Button>
-                                                                <Button onClick={() => solveStep(task._id.$oid)}>Solve Task</Button>
-                                                            </AccordionPanel>
-                                                        </AccordionItem>
-                                                    ))}
-                                                </Accordion>
-                                            </AccordionPanel>
-                                        </AccordionItem>
-                                    ))}
-                                </Accordion>
+                                                        <Accordion allowToggle>
+                                                            {task.steps.map((step) => (
+                                                                <AccordionItem key={step.type}>
+                                                                    <h2>
+                                                                        <AccordionButton>
+                                                                            <Box as="span" flex='1' textAlign='left'>{step.type}</Box>
+                                                                            <AccordionIcon />
+                                                                        </AccordionButton>
+                                                                    </h2>
+                                                                    <AccordionPanel pb={4}>
+                                                                        {step.summary}
+                                                                        <Button onClick={() => editStep(task._id.$oid, step.type)}>Edit Step</Button>
+                                                                        <Button onClick={() => removeStep(task._id.$oid, step.type)}>Remove Step</Button>
+                                                                        <Button onClick={() => solveStep(task._id.$oid)}>Solve Task</Button>
+                                                                    </AccordionPanel>
+                                                                </AccordionItem>
+                                                            ))}
+                                                        </Accordion>
+                                                    </AccordionPanel>
+                                                </AccordionItem>
+                                            ))}
+                                        </Accordion>
 
-                            </TabPanel>
-                            <TabPanel>
-                                <p>Skills!</p>
-                                <Accordion>
-                                    {skills.map((skill) => (
-                                        <AccordionItem key={skill._id.$oid}>
-                                            <h2>
-                                                <AccordionButton>
-                                                    <h2>SkillId: </h2>
-                                                    <small>
-                                                        <Box as="span" flex='1' textAlign='left'>{skill.skillId}</Box>
-                                                    </small>
-                                                    <Button onClick={() => editSkill(skill._id.$oid)}>Edit Skill</Button>
-                                                    <Button onClick={() => removeSkill(skill._id.$oid)}>Remove Skill</Button>
-                                                    <Button onClick={() => solveSkill(skill._id.$oid)}>Solve Skill</Button>
-                                                    <AccordionIcon />
-                                                </AccordionButton>
-                                            </h2>
-                                            <AccordionPanel pb={4}>
-                                                {/*{skill?.summary}*/}
+                                    </TabPanel>
+                                    <TabPanel>
+                                        <p>Skills!</p>
+                                        <Accordion>
+                                            {skills.map((skill) => (
+                                                <AccordionItem key={skill._id.$oid}>
+                                                    <h2>
+                                                        <AccordionButton>
+                                                            <h2>SkillId: </h2>
+                                                            <small>
+                                                                <Box as="span" flex='1' textAlign='left'>{skill.skillId}</Box>
+                                                            </small>
+                                                            <Button onClick={() => editSkill(skill._id.$oid)}>Edit Skill</Button>
+                                                            <Button onClick={() => removeSkill(skill._id.$oid)}>Remove Skill</Button>
+                                                            <Button onClick={() => solveSkill(skill._id.$oid)}>Solve Skill</Button>
+                                                            <AccordionIcon />
+                                                        </AccordionButton>
+                                                    </h2>
+                                                    <AccordionPanel pb={4}>
+                                                        {/*{skill?.summary}*/}
 
-                                                <Accordion allowToggle>
-                                                    <AccordionItem key="inputs">
-                                                        <h2>
-                                                            <AccordionButton>
-                                                                <Box as="span" flex='1' textAlign='left'>Inputs</Box>
-                                                                <AccordionIcon />
-                                                            </AccordionButton>
-                                                        </h2>
-                                                        <AccordionPanel pb={4}>
-                                                            <ul>
-                                                                {/*{skill?.inputs.map((input) => (*/}
-                                                                {/*    <li key={input.name}>*/}
-                                                                {/*        <strong>{input.name}</strong>: {input.description}*/}
-                                                                {/*    </li>*/}
-                                                                {/*))}*/}
-                                                            </ul>
-                                                        </AccordionPanel>
-                                                    </AccordionItem>
+                                                        <Accordion allowToggle>
+                                                            <AccordionItem key="inputs">
+                                                                <h2>
+                                                                    <AccordionButton>
+                                                                        <Box as="span" flex='1' textAlign='left'>Inputs</Box>
+                                                                        <AccordionIcon />
+                                                                    </AccordionButton>
+                                                                </h2>
+                                                                <AccordionPanel pb={4}>
+                                                                    <ul>
+                                                                        {/*{skill?.inputs.map((input) => (*/}
+                                                                        {/*    <li key={input.name}>*/}
+                                                                        {/*        <strong>{input.name}</strong>: {input.description}*/}
+                                                                        {/*    </li>*/}
+                                                                        {/*))}*/}
+                                                                    </ul>
+                                                                </AccordionPanel>
+                                                            </AccordionItem>
 
-                                                    <AccordionItem key="outputs">
-                                                        <h2>
-                                                            <AccordionButton>
-                                                                <Box as="span" flex='1' textAlign='left'>Outputs</Box>
-                                                                <AccordionIcon />
-                                                            </AccordionButton>
-                                                        </h2>
-                                                        <AccordionPanel pb={4}>
-                                                            <ul>
-                                                                {/*{Object.entries(skill?.outputMap).map(([key, value]) => (*/}
-                                                                {/*    <li key={key}>*/}
-                                                                {/*        <strong>{key}</strong>: {value}*/}
-                                                                {/*    </li>*/}
-                                                                {/*))}*/}
-                                                            </ul>
-                                                        </AccordionPanel>
-                                                    </AccordionItem>
+                                                            <AccordionItem key="outputs">
+                                                                <h2>
+                                                                    <AccordionButton>
+                                                                        <Box as="span" flex='1' textAlign='left'>Outputs</Box>
+                                                                        <AccordionIcon />
+                                                                    </AccordionButton>
+                                                                </h2>
+                                                                <AccordionPanel pb={4}>
+                                                                    <ul>
+                                                                        {/*{Object.entries(skill?.outputMap).map(([key, value]) => (*/}
+                                                                        {/*    <li key={key}>*/}
+                                                                        {/*        <strong>{key}</strong>: {value}*/}
+                                                                        {/*    </li>*/}
+                                                                        {/*))}*/}
+                                                                    </ul>
+                                                                </AccordionPanel>
+                                                            </AccordionItem>
 
-                                                    <AccordionItem key="keywords">
-                                                        <h2>
-                                                            <AccordionButton>
-                                                                <Box as="span" flex='1' textAlign='left'>Keywords</Box>
-                                                                <AccordionIcon />
-                                                            </AccordionButton>
-                                                        </h2>
-                                                        <AccordionPanel pb={4}>
-                                                            {skill.keywords.join(", ")}
-                                                        </AccordionPanel>
-                                                    </AccordionItem>
-                                                </Accordion>
-                                            </AccordionPanel>
-                                        </AccordionItem>
-                                    ))}
-                                </Accordion>
-                            </TabPanel>
-                            <TabPanel>
-                                <p>Solutions!</p>
-                            </TabPanel>
-                        </TabPanels>
-                    </Tabs>
-                </div>
-            ) : (<div>
-                Advanced mode off
-            </div>)}
-
-            <Button onClick={() => setAdvancedMode(!advancedMode)}>
-                {advancedMode ? 'Disable' : 'Enable'} Advanced Mode
-            </Button>
-
+                                                            <AccordionItem key="keywords">
+                                                                <h2>
+                                                                    <AccordionButton>
+                                                                        <Box as="span" flex='1' textAlign='left'>Keywords</Box>
+                                                                        <AccordionIcon />
+                                                                    </AccordionButton>
+                                                                </h2>
+                                                                <AccordionPanel pb={4}>
+                                                                    {skill.keywords.join(", ")}
+                                                                </AccordionPanel>
+                                                            </AccordionItem>
+                                                        </Accordion>
+                                                    </AccordionPanel>
+                                                </AccordionItem>
+                                            ))}
+                                        </Accordion>
+                                    </TabPanel>
+                                    <TabPanel>
+                                        <p>Solutions!</p>
+                                    </TabPanel>
+                                </TabPanels>
+                            </Tabs>
+                        </div>
+                    ) : (<div>
+                    </div>)}
+                    <Button size='xs' onClick={() => setAdvancedMode(!advancedMode)}>
+                        {advancedMode ? 'Disable' : 'Enable'} Advanced Mode
+                    </Button>
+                </GridItem>
+            </Grid>
         </div>
     );
 }
