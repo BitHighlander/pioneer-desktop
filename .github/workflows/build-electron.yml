@@ -43,7 +43,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: app-build-dir-${{ runner.os }}
-          path: packages/keepkey-desktop/build/
+          path: dist
           if-no-files-found: error
       - name: Mac - Prepare For App Notarization
         if: startsWith(matrix.os, 'macos')
@@ -87,8 +87,8 @@ jobs:
         with:
           name: linux-AppImage
           path: |
-            packages/keepkey-desktop/dist/*.AppImage
-            packages/keepkey-desktop/dist/*.AppImage.blockmap
+            dist/*.AppImage
+            dist/*.AppImage.blockmap
           if-no-files-found: error
       - name: Mac - Upload .dmg
         if: startsWith(matrix.os, 'macos')
@@ -96,10 +96,10 @@ jobs:
         with:
           name: mac-dmg
           path: |
-            packages/keepkey-desktop/dist/*.dmg
-            packages/keepkey-desktop/dist/*.dmg.blockmap
-            packages/keepkey-desktop/dist/*.zip
-            packages/keepkey-desktop/dist/*.zip.blockmap
+            dist/*.dmg
+            dist/*.dmg.blockmap
+            dist/*.zip
+            dist/*.zip.blockmap
           if-no-files-found: error
       - name: Windows - Upload .exe
         if: startsWith(matrix.os, 'windows')
@@ -107,6 +107,6 @@ jobs:
         with:
           name: windows-nsis
           path: |
-            packages/keepkey-desktop/dist/*.exe
-            packages/keepkey-desktop/dist/*.exe.blockmap
+            dist/*.exe
+            dist/*.exe.blockmap
           if-no-files-found: error
