@@ -1,0 +1,46 @@
+==> Downloading https://ghcr.io/v2/homebrew/portable-ruby/portable-ruby/blobs/sha256:905b0c3896164ae8067a22fff2fd0b80b16d3c8bb72441403eedf69da71ec717
+#=#=#                                                                         ##O#-#                                                                        ##O=#  #                                                                      #=#=-#  #                                                                     -#O#- #   #                                                                   -=#=#   #   #                                                                 -=O#-#   #   #                                                                -=O=#  #   #   #                                                              ######                                                                     8.5%###################                                                       26.9%##########################################                                58.5%#############################################################             85.4%######################################################################## 100.0%
+==> Pouring portable-ruby-2.6.10_1.arm64_big_sur.bottle.tar.gz
+Updated 2 taps (homebrew/core and homebrew/cask).
+==> New Formulae
+form
+hck
+sad
+==> New Casks
+bluos-controller
+canon-eos-utility
+corsair-icue
+displaylink
+elgato-stream-deck
+elgato-video-capture
+elgato-wave-link
+konica-minolta-bizhub-c750i-driver
+logitech-camera-settings
+logitech-g-hub
+logitech-options
+segger-jlink
+sony-ps-remote-play
+tachidesk-sorayomi
+toshiba-color-mfp
+ubiquiti-unifi-controller
+yubico-yubikey-manager
+==> Outdated Formulae
+doctl
+git-lfs
+libusb
+mongodb-community
+mongodb-database-tools
+ncurses
+nvm
+oniguruma
+protobuf
+pulumi
+rustup-init
+stern
+watch
+zsh
+
+You have 14 outdated formulae installed.
+You can upgrade them with brew upgrade
+or list them with brew outdated.
+Error: python@3.9 not installed

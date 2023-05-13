@@ -1,0 +1,4818 @@
+{
+	"components": {
+		"examples": {},
+		"headers": {},
+		"parameters": {},
+		"requestBodies": {},
+		"responses": {},
+		"schemas": {
+			"Health": {
+				"properties": {
+					"online": {
+						"type": "boolean"
+					},
+					"name": {
+						"type": "string"
+					},
+					"version": {
+						"type": "string"
+					},
+					"system": {},
+					"hostname": {
+						"type": "string"
+					},
+					"uptime": {},
+					"loadavg": {}
+				},
+				"required": [
+					"online",
+					"name",
+					"version",
+					"system",
+					"hostname",
+					"uptime",
+					"loadavg"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"Chart": {
+				"properties": {
+					"network": {
+						"type": "string"
+					},
+					"symbol": {
+						"type": "string"
+					},
+					"pioneer": {
+						"type": "string"
+					},
+					"queueId": {
+						"type": "string"
+					},
+					"type": {
+						"type": "string"
+					},
+					"username": {
+						"type": "string"
+					},
+					"contractName": {
+						"type": "string"
+					},
+					"contractVerbose": {},
+					"tags": {},
+					"pubkey": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"network",
+					"type",
+					"contractName",
+					"tags",
+					"pubkey"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"BodyAllowance": {
+				"properties": {
+					"token": {
+						"type": "string"
+					},
+					"spender": {
+						"type": "string"
+					},
+					"sender": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"token",
+					"spender",
+					"sender"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"EstimateFeeBody": {
+				"properties": {
+					"coin": {
+						"type": "string"
+					},
+					"amount": {
+						"type": "string"
+					},
+					"contract": {
+						"type": "string"
+					},
+					"recipient": {
+						"type": "string"
+					},
+					"memo": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"coin",
+					"amount",
+					"contract",
+					"recipient",
+					"memo"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"GetFeesWithMemoBody": {
+				"properties": {
+					"network": {
+						"type": "string"
+					},
+					"memo": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"network",
+					"memo"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"BroadcastBody": {
+				"properties": {
+					"coin": {
+						"type": "string"
+					},
+					"network": {
+						"type": "string"
+					},
+					"asset": {
+						"type": "string"
+					},
+					"isTestnet": {
+						"type": "boolean"
+					},
+					"serialized": {
+						"type": "string"
+					},
+					"signature": {
+						"type": "string"
+					},
+					"type": {
+						"type": "string"
+					},
+					"txid": {
+						"type": "string"
+					},
+					"noBroadcast": {
+						"type": "boolean"
+					},
+					"description": {},
+					"invocationId": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"network",
+					"serialized",
+					"txid",
+					"invocationId"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"SetContextBody": {
+				"properties": {
+					"context": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"context"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"UpdateInvocationBody": {
+				"properties": {
+					"invocationId": {
+						"type": "string"
+					},
+					"invocation": {},
+					"unsignedTx": {},
+					"signedTx": {}
+				},
+				"required": [
+					"invocationId",
+					"invocation",
+					"unsignedTx"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"IgnoreShitcoins": {
+				"properties": {
+					"coins": {
+						"items": {},
+						"type": "array"
+					},
+					"shitcoins": {
+						"items": {},
+						"type": "array"
+					}
+				},
+				"required": [
+					"coins"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"DeleteInvocationBody": {
+				"properties": {
+					"invocationId": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"invocationId"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"PairBody": {
+				"properties": {
+					"code": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"code"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"CreatePairingCodeBody": {
+				"properties": {
+					"service": {
+						"type": "string"
+					},
+					"url": {
+						"type": "string"
+					},
+					"data": {}
+				},
+				"type": "object",
+				"additionalProperties": false
+			},
+			"CreateApiKeyBody": {
+				"properties": {
+					"account": {
+						"type": "string"
+					},
+					"data": {}
+				},
+				"required": [
+					"account"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"TransactionsBody": {
+				"properties": {
+					"coin": {
+						"type": "string"
+					},
+					"startTime": {
+						"type": "number",
+						"format": "double"
+					},
+					"endTime": {
+						"type": "number",
+						"format": "double"
+					},
+					"startBlock": {
+						"type": "number",
+						"format": "double"
+					},
+					"endBlock": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": [
+					"coin"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"RegisterBodyData": {
+				"properties": {
+					"pubkeys": {}
+				},
+				"required": [
+					"pubkeys"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"WalletDescription": {
+				"properties": {
+					"context": {
+						"type": "string"
+					},
+					"type": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"context",
+					"type"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"RegisterBody": {
+				"properties": {
+					"isTestnet": {
+						"type": "boolean"
+					},
+					"blockchains": {},
+					"username": {
+						"type": "string"
+					},
+					"publicAddress": {
+						"type": "string"
+					},
+					"data": {
+						"$ref": "#/components/schemas/RegisterBodyData"
+					},
+					"walletDescription": {
+						"$ref": "#/components/schemas/WalletDescription"
+					},
+					"context": {
+						"type": "string"
+					},
+					"queryKey": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"blockchains",
+					"username",
+					"publicAddress",
+					"data",
+					"walletDescription",
+					"context"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ImportBody": {
+				"properties": {
+					"source": {
+						"type": "string"
+					},
+					"coin": {
+						"type": "string"
+					},
+					"pubkeys": {}
+				},
+				"required": [
+					"source",
+					"coin",
+					"pubkeys"
+				],
+				"type": "object",
+				"additionalProperties": false
+			}
+		},
+		"securitySchemes": {}
+	},
+	"info": {
+		"title": "pioneer-server",
+		"version": "0.0.13",
+		"description": "Pioneer is a multi-asset blockchain explorer and subscription service",
+		"contact": {
+			"name": "highlander ",
+			"email": "bithighlander@gmail.com"
+		}
+	},
+	"openapi": "3.0.0",
+	"paths": {
+		"/health": {
+			"get": {
+				"operationId": "Health",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Health"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Status Endpoints"
+				],
+				"security": [],
+				"parameters": []
+			}
+		},
+		"/atlas/assets/list/{limit}/{skip}": {
+			"get": {
+				"operationId": "SearchAssetsPageniate",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"items": {},
+									"type": "array"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Atlas Endpoints"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "limit",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "path",
+						"name": "skip",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			}
+		},
+		"/atlas/search/blockchains/list/{limit}/{skip}": {
+			"get": {
+				"operationId": "SearchBlockchainsPageniate",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"items": {},
+									"type": "array"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Atlas Endpoints"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "limit",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "path",
+						"name": "skip",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			}
+		},
+		"/atlas/dapps/list/{limit}/{skip}": {
+			"get": {
+				"operationId": "SearchDappsPageniate",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Atlas Endpoints"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "limit",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "path",
+						"name": "skip",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			}
+		},
+		"/atlas/dapps/pending/{limit}/{skip}": {
+			"get": {
+				"operationId": "SearchDappsPageniatePending",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Atlas Endpoints"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "limit",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "path",
+						"name": "skip",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			}
+		},
+		"/atlas/dapps/{developer}": {
+			"get": {
+				"operationId": "SearchDappsByDeveloper",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Atlas Endpoints"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "developer",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/atlas/dapps/pending/{developer}": {
+			"get": {
+				"operationId": "SearchDappsByDeveloperPendingTest",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Atlas Endpoints"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "developer",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/atlas/tokens/{contract}": {
+			"get": {
+				"operationId": "SearchByContract",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Atlas Endpoints"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "contract",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/atlas/searchByTag/asset/{tagString}": {
+			"get": {
+				"operationId": "SearchByTag",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Atlas Endpoints"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "tagString",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/atlas/list/asset/native/{tagString}": {
+			"get": {
+				"operationId": "SearchByTagNative",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"items": {},
+									"type": "array"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Atlas Endpoints"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "tagString",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/atlas/list/asset/search/chainId/{chainId}/{name}": {
+			"get": {
+				"operationId": "SearchByNameAndChainId",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"items": {},
+									"type": "array"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Atlas Endpoints"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "chainId",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "path",
+						"name": "name",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/atlas/list/asset/search/{name}": {
+			"get": {
+				"operationId": "SearchByName",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Atlas Endpoints"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "name",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/atlas/list/asset/search/native/{name}": {
+			"get": {
+				"operationId": "SearchByNameNative",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Atlas Endpoints"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "name",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/atlas/list/asset/chainId/{chainId}/{limit}/{skip}": {
+			"get": {
+				"operationId": "SearchAssetsListByChainId",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Atlas Endpoints"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "chainId",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "path",
+						"name": "limit",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "path",
+						"name": "skip",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			}
+		},
+		"/atlas/list/asset/{limit}/{skip}": {
+			"get": {
+				"operationId": "SearchAssetsList",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Atlas Endpoints"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "limit",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "path",
+						"name": "skip",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			}
+		},
+		"/atlas/searchBySymbol/asset/{symbol}": {
+			"get": {
+				"operationId": "SearchBySymbol",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Atlas Endpoints"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "symbol",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/atlas/list/top/{start}/{stop}/{limit}": {
+			"get": {
+				"operationId": "AtlasNetwork",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"items": {},
+									"type": "array"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Atlas Endpoints"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "start",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "path",
+						"name": "stop",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "path",
+						"name": "limit",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			}
+		},
+		"/atlas/nodes/{limit}/{skip}": {
+			"get": {
+				"operationId": "SearchNodes",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Atlas Endpoints"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "limit",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "path",
+						"name": "skip",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			}
+		},
+		"/atlas/blockchains/{limit}/{skip}": {
+			"get": {
+				"operationId": "SearchBlockchainsPaginate",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Atlas Endpoints"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "limit",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "path",
+						"name": "skip",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			}
+		},
+		"/atlas/blockchains/byType/{type}/{limit}/{skip}": {
+			"get": {
+				"operationId": "SearchBlockchainsByTagPaginate",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Atlas Endpoints"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "type",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"in": "path",
+						"name": "limit",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "path",
+						"name": "skip",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			}
+		},
+		"/atlas/dapps/{limit}/{skip}": {
+			"get": {
+				"operationId": "SearchDappsPaginate",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Atlas Endpoints"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "limit",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "path",
+						"name": "skip",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			}
+		},
+		"/atlas/assets/{limit}/{skip}": {
+			"get": {
+				"operationId": "SearchAppsPaginate",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Atlas Endpoints"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "limit",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "path",
+						"name": "skip",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			}
+		},
+		"/atlas/pioneers/{limit}/{skip}": {
+			"get": {
+				"operationId": "SearchPioneersPaginate",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Atlas Endpoints"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "limit",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "path",
+						"name": "skip",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			}
+		},
+		"/atlas/blockchains/chainId/{chainId}": {
+			"get": {
+				"operationId": "SearchBlockchainByChainId",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Atlas Endpoints"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "chainId",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/atlas/network/chainId/{chainId}": {
+			"get": {
+				"operationId": "SearchByNetworkId",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Atlas Endpoints"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "chainId",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			}
+		},
+		"/atlas/nodes/network/chainId/{chainId}": {
+			"get": {
+				"operationId": "SearchNodesByNetworkId",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Atlas Endpoints"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "chainId",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			}
+		},
+		"/atlas/search/assets/byName/{asset}": {
+			"get": {
+				"operationId": "SearchAssetsByName",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Atlas Endpoints"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "asset",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/atlas/search/nodes/blockchains/{blockchain}": {
+			"get": {
+				"operationId": "SearchByNetworkName",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"items": {},
+									"type": "array"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Atlas Endpoints"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "blockchain",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/atlas/search/blockchains/{blockchain}": {
+			"get": {
+				"operationId": "SearchByBlockchainName",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Atlas Endpoints"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "blockchain",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/atlas/dapp/chart": {
+			"post": {
+				"operationId": "ChartDapp",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Atlas Endpoints"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {}
+						}
+					}
+				}
+			}
+		},
+		"/atlas/asset/chart": {
+			"post": {
+				"operationId": "ChartAsset",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Atlas Endpoints"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {}
+						}
+					}
+				}
+			}
+		},
+		"/atlas/blockchain/chart": {
+			"post": {
+				"operationId": "ChartBlockchain",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Atlas Endpoints"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {}
+						}
+					}
+				}
+			}
+		},
+		"/atlas/node/submit": {
+			"post": {
+				"operationId": "ChartNode",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Atlas Endpoints"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {}
+						}
+					}
+				}
+			}
+		},
+		"/atlas/contract/chart": {
+			"post": {
+				"operationId": "Chart",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Atlas Endpoints"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/Chart"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/node/update": {
+			"post": {
+				"operationId": "UpdateNode",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Atlas Endpoints"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "header",
+						"name": "Authorization",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {}
+						}
+					}
+				}
+			}
+		},
+		"/blockchain/update": {
+			"post": {
+				"operationId": "UpdateBlockchain",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Atlas Endpoints"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "header",
+						"name": "Authorization",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {}
+						}
+					}
+				}
+			}
+		},
+		"/asset/update": {
+			"post": {
+				"operationId": "UpdateAsset",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Atlas Endpoints"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "header",
+						"name": "Authorization",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {}
+						}
+					}
+				}
+			}
+		},
+		"/globals": {
+			"get": {
+				"operationId": "Globals",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Public Endpoints"
+				],
+				"security": [],
+				"parameters": []
+			}
+		},
+		"/online": {
+			"get": {
+				"operationId": "Online",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Public Endpoints"
+				],
+				"security": [],
+				"parameters": []
+			}
+		},
+		"/status": {
+			"get": {
+				"operationId": "Status",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Public Endpoints"
+				],
+				"security": [],
+				"parameters": []
+			}
+		},
+		"/blockchains": {
+			"get": {
+				"operationId": "Blockchains",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"properties": {
+										"all": {
+											"items": {},
+											"type": "array"
+										},
+										"live": {
+											"items": {
+												"type": "string"
+											},
+											"type": "array"
+										}
+									},
+									"required": [
+										"all",
+										"live"
+									],
+									"type": "object"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Public Endpoints"
+				],
+				"security": [],
+				"parameters": []
+			}
+		},
+		"/blockHeights": {
+			"get": {
+				"operationId": "BlockHeights",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Public Endpoints"
+				],
+				"security": [],
+				"parameters": []
+			}
+		},
+		"/blockHeight/{network}": {
+			"get": {
+				"operationId": "BlockHeight",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Public Endpoints"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "network",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/blocks/{coin}/{height}": {
+			"get": {
+				"operationId": "GetBlockHash",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Public Endpoints"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "coin",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"in": "path",
+						"name": "height",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			}
+		},
+		"/username/{username}": {
+			"get": {
+				"operationId": "Username",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"description": "get public user info",
+				"tags": [
+					"Public Endpoints"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "username",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/invocation/{invocationId}": {
+			"get": {
+				"operationId": "Invocation",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"description": "\nStatus codes\n===============\n   -1: errored\n    0: unknown\n    1: built\n    2: broadcasted\n    3: confirmed\n    4: fullfilled (swap completed)",
+				"tags": [
+					"Public Endpoints"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "invocationId",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/getPubkeyBalance/{asset}/{pubkey}": {
+			"get": {
+				"operationId": "GetPubkeyBalance",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"description": "get balance of an address",
+				"tags": [
+					"Public Endpoints"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "asset",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"in": "path",
+						"name": "pubkey",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/{network}/getTransaction/{txid}/{type}": {
+			"get": {
+				"operationId": "GetTransaction",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"description": "getTransaction",
+				"tags": [
+					"Public Endpoints"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "network",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"in": "path",
+						"name": "txid",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"in": "path",
+						"name": "type",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/getFeeInfo/{coin}": {
+			"get": {
+				"operationId": "GetFeeInfo",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Public Endpoints"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "coin",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/{network}/getValidators": {
+			"get": {
+				"operationId": "GetValidators",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"description": "getValidators",
+				"tags": [
+					"Public Endpoints"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "network",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/{network}/getDelegations/{address}/{validator}": {
+			"get": {
+				"operationId": "GetDelegations",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"description": "getValidators",
+				"tags": [
+					"Public Endpoints"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "network",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"in": "path",
+						"name": "address",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"in": "path",
+						"name": "validator",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/getChangeAddress/{network}/{xpub}": {
+			"get": {
+				"operationId": "GetChangeAddress",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"properties": {
+										"receiveIndex": {
+											"type": "number",
+											"format": "double"
+										},
+										"changeIndex": {
+											"type": "number",
+											"format": "double"
+										}
+									},
+									"required": [
+										"receiveIndex",
+										"changeIndex"
+									],
+									"type": "object"
+								}
+							}
+						}
+					}
+				},
+				"description": "Retrieve account info",
+				"tags": [
+					"Public Endpoints"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "network",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"in": "path",
+						"name": "xpub",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/getNewAddress/{network}/{xpub}": {
+			"get": {
+				"operationId": "GetNewAddress",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"properties": {
+										"receiveIndex": {
+											"type": "number",
+											"format": "double"
+										}
+									},
+									"required": [
+										"receiveIndex"
+									],
+									"type": "object"
+								}
+							}
+						}
+					}
+				},
+				"description": "Retrieve account info",
+				"tags": [
+					"Public Endpoints"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "network",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"in": "path",
+						"name": "xpub",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/listUnspent/{network}/{xpub}": {
+			"get": {
+				"operationId": "ListUnspent",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"description": "Retrieve account info",
+				"tags": [
+					"Public Endpoints"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "network",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"in": "path",
+						"name": "xpub",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/utxo/getBalance/{network}/{xpub}": {
+			"get": {
+				"operationId": "GetBalance",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"description": "Retrieve account info",
+				"tags": [
+					"Public Endpoints"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "network",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"in": "path",
+						"name": "xpub",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/getAccountInfo/{network}/{address}": {
+			"get": {
+				"operationId": "GetAccountInfo",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"description": "Retrieve account info",
+				"tags": [
+					"Public Endpoints"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "network",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"in": "path",
+						"name": "address",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/eos/accountsFromPubkey/{pubkey}": {
+			"get": {
+				"operationId": "AccountsFromEosPubkey",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"description": "Retrieve accounts for EOS pubkey",
+				"tags": [
+					"Public Endpoints"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "pubkey",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/eos/accountInfo/{username}": {
+			"get": {
+				"operationId": "EosAccountInfo",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"description": "Retrieve public user info",
+				"tags": [
+					"Public Endpoints"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "username",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/eth/getBalanceToken/{address}/{token}": {
+			"get": {
+				"operationId": "GetBalanceToken",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"description": "Tokens balance check",
+				"tags": [
+					"Public Endpoints"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "address",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"in": "path",
+						"name": "token",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/eth/getNonce/{address}": {
+			"get": {
+				"operationId": "GetNonce",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"description": "ETH nonce check",
+				"tags": [
+					"Public Endpoints"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "address",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/eth/getGasPrice": {
+			"get": {
+				"operationId": "GetGasPrice",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"description": "ETH getGasPrice",
+				"tags": [
+					"Public Endpoints"
+				],
+				"security": [],
+				"parameters": []
+			}
+		},
+		"/eth/getTransferData/{coin}/{address}/{amount}": {
+			"get": {
+				"operationId": "GetTransferData",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"description": "ETH getTransferData",
+				"tags": [
+					"Public Endpoints"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "coin",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"in": "path",
+						"name": "address",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"in": "path",
+						"name": "amount",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			}
+		},
+		"/eth/txCount/{address}": {
+			"get": {
+				"operationId": "GetTxCount",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"description": "ETH get tx count info (for nonce calculations)",
+				"tags": [
+					"Public Endpoints"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "address",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/eth/getTokens/{address}": {
+			"get": {
+				"operationId": "GetTokenInfo",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"description": "ETH get token balance and info",
+				"tags": [
+					"Public Endpoints"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "address",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/eos/validateEosUsername/{username}": {
+			"get": {
+				"operationId": "ValidateEosUsername",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"description": "EOS get token balance and info",
+				"tags": [
+					"Public Endpoints"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "username",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/eos/getEosAccountsByPubkey/{pubkey}": {
+			"get": {
+				"operationId": "GetEosAccountsByPubkey",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"description": "EOS get token balance and info",
+				"tags": [
+					"Public Endpoints"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "pubkey",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/eth/getAllowance": {
+			"post": {
+				"operationId": "GetAllowance",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"description": "Mempool intake (blocknative)",
+				"tags": [
+					"Public Endpoints"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/BodyAllowance"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/getFee": {
+			"post": {
+				"operationId": "GetFee",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Public Endpoints"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {}
+						}
+					}
+				}
+			}
+		},
+		"/estimateFeesWithGasPricesAndLimits": {
+			"post": {
+				"operationId": "EstimateFeesWithGasPricesAndLimits",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Public Endpoints"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {}
+						}
+					}
+				}
+			}
+		},
+		"/estimateFee": {
+			"post": {
+				"operationId": "EstimateFee",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Public Endpoints"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/EstimateFeeBody"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/getThorchainMemoEncoded": {
+			"post": {
+				"operationId": "GetThorchainMemoEncoded",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Public Endpoints"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {}
+						}
+					}
+				}
+			}
+		},
+		"/getFeesWithMemo": {
+			"post": {
+				"operationId": "GetFeesWithMemo",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Public Endpoints"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/GetFeesWithMemoBody"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/pushTx": {
+			"post": {
+				"operationId": "PushTx",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Public Endpoints"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {}
+						}
+					}
+				}
+			}
+		},
+		"/broadcast": {
+			"post": {
+				"operationId": "Broadcast",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"description": "BroadCast a signed transaction",
+				"tags": [
+					"Public Endpoints"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/BroadcastBody"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/streams/{address}": {
+			"get": {
+				"operationId": "Streams",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Streams Endpoints"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "address",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/market/top": {
+			"get": {
+				"operationId": "Market",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"properties": {
+										"coingecko": {},
+										"coincap": {},
+										"success": {
+											"type": "boolean"
+										},
+										"type": {
+											"type": "string"
+										}
+									},
+									"required": [
+										"coingecko",
+										"coincap",
+										"success",
+										"type"
+									],
+									"type": "object"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Atlas Endpoints"
+				],
+				"security": [],
+				"parameters": []
+			}
+		},
+		"/nft/{address}": {
+			"get": {
+				"operationId": "GetNfts",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "boolean"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"NFT Endpoints"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "address",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/osmosis/pools": {
+			"get": {
+				"operationId": "Pools",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Atlas Endpoints"
+				],
+				"security": [],
+				"parameters": []
+			}
+		},
+		"/osmosis/imperator/pools": {
+			"get": {
+				"operationId": "ImperatorPools",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Atlas Endpoints"
+				],
+				"security": [],
+				"parameters": []
+			}
+		},
+		"/osmosis/price/{token}": {
+			"get": {
+				"operationId": "TokenPrice",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Atlas Endpoints"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "token",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/osmosis/pool/{pair}": {
+			"get": {
+				"operationId": "Pool",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Atlas Endpoints"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "pair",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/osmosis/quoteSwap/{pair}/{amountIn}": {
+			"get": {
+				"operationId": "QuoteSwap",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"properties": {
+										"buyAmount": {},
+										"tradeFee": {},
+										"priceImpact": {
+											"type": "string"
+										},
+										"rate": {
+											"type": "string"
+										}
+									},
+									"required": [
+										"buyAmount",
+										"tradeFee",
+										"priceImpact",
+										"rate"
+									],
+									"type": "object"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Atlas Endpoints"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "pair",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"in": "path",
+						"name": "amountIn",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/forget": {
+			"get": {
+				"operationId": "Forget",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"description": "Forget Account\n    Clear transactions",
+				"tags": [
+					"Private Endpoints"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "header",
+						"name": "Authorization",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/user": {
+			"get": {
+				"operationId": "User",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Private Endpoints"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "header",
+						"name": "Authorization",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/info/{context}": {
+			"get": {
+				"operationId": "Info",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"description": "\nGet the balances for a given username\n\nprotect mongo with redis cache\n\nprotect nodes with mongo data\n\nAll events push OUT in production\n\n   nodes ->  mongo -> redis -> (ws) user local db",
+				"tags": [
+					"Private Endpoints"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "context",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"in": "header",
+						"name": "Authorization",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/invocations": {
+			"get": {
+				"operationId": "Invocations",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Private Endpoints"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "header",
+						"name": "Authorization",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/refresh": {
+			"get": {
+				"operationId": "Refresh",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"description": "Get the refresh on for a given username",
+				"tags": [
+					"Private Endpoints"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "header",
+						"name": "Authorization",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/context": {
+			"get": {
+				"operationId": "Context",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"description": "Get the context for a given username",
+				"tags": [
+					"Private Endpoints"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "header",
+						"name": "Authorization",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/login": {
+			"post": {
+				"operationId": "Login",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"description": "POST /users",
+				"tags": [
+					"Private Endpoints"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {}
+						}
+					}
+				}
+			}
+		},
+		"/setAssetContext": {
+			"post": {
+				"operationId": "SetAssetContext",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"description": "Get the balances for a given username on current context for asset",
+				"tags": [
+					"Private Endpoints"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "header",
+						"name": "Authorization",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {}
+						}
+					}
+				}
+			}
+		},
+		"/setBlockchainContext": {
+			"post": {
+				"operationId": "SetBlockchainContext",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"description": "Update current account blockchain context",
+				"tags": [
+					"Private Endpoints"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "header",
+						"name": "Authorization",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {}
+						}
+					}
+				}
+			}
+		},
+		"/setContext": {
+			"post": {
+				"operationId": "SetContext",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"description": "Update current account context",
+				"tags": [
+					"Private Endpoints"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "header",
+						"name": "Authorization",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/SetContextBody"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/updateInvocation": {
+			"post": {
+				"operationId": "UpdateInvocation",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"description": "updateInvocation an sdk with app",
+				"tags": [
+					"Private Endpoints"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "header",
+						"name": "Authorization",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/UpdateInvocationBody"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/ignoreShitcoin": {
+			"post": {
+				"operationId": "IgnoreShitcoin",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"description": "Ignore a Coin from a users view",
+				"tags": [
+					"Private Endpoints"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "header",
+						"name": "Authorization",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/IgnoreShitcoins"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/deleteInvocation": {
+			"post": {
+				"operationId": "DeleteInvocation",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"description": "deleteInvocation",
+				"tags": [
+					"Private Endpoints"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "header",
+						"name": "Authorization",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/DeleteInvocationBody"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/pair": {
+			"post": {
+				"operationId": "Pair",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"description": "Pair an sdk with app",
+				"tags": [
+					"Private Endpoints"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "header",
+						"name": "Authorization",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/PairBody"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/createPairingCode": {
+			"post": {
+				"operationId": "CreatePairingCode",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"description": "Pair an sdk with app",
+				"tags": [
+					"Private Endpoints"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "header",
+						"name": "Authorization",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/CreatePairingCodeBody"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/createApiKey": {
+			"post": {
+				"operationId": "CreateApiKey",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"description": "Create an api key",
+				"tags": [
+					"Private Endpoints"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "header",
+						"name": "Authorization",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/CreateApiKeyBody"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/utxos": {
+			"post": {
+				"operationId": "GetUtxos",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"description": "get utxos",
+				"tags": [
+					"Private Endpoints"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "header",
+						"name": "Authorization",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {}
+						}
+					}
+				}
+			}
+		},
+		"/transactions": {
+			"post": {
+				"operationId": "Transactions",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"description": "Get transaction history\n\nstart block\nend block\ncoin",
+				"tags": [
+					"Private Endpoints"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "header",
+						"name": "Authorization",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/TransactionsBody"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/registerUser": {
+			"post": {
+				"operationId": "RegisterUser",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"description": "Create a user account on Pioneer\n\nAuth providers\n\n   * Shapeshift\n\n   * Keypair\n\n\n\n\nNOTE:\n\nAny already REGISTERED user may use this name to register additional coins/pubkeys or update context or state\n\n\nOutput:\n    QueryToken: (SUBSCRIBE permissions)\n        Blockchain and payment info\n\nAuth providers may issue/revoke Query tokens",
+				"tags": [
+					"Private Endpoints"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "header",
+						"name": "Authorization",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {}
+						}
+					}
+				}
+			}
+		},
+		"/register": {
+			"post": {
+				"operationId": "Register",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Private Endpoints"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "header",
+						"name": "Authorization",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/RegisterBody"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/import": {
+			"post": {
+				"operationId": "Import",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"description": "Import Pubkeys\n\nBulk add address's to be tracked under a username",
+				"tags": [
+					"Private Endpoints"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "header",
+						"name": "Authorization",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/ImportBody"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/pioneer/evm/tx": {
+			"post": {
+				"operationId": "SmartInsight",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Status Endpoints"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "header",
+						"name": "Authorization",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {}
+						}
+					}
+				}
+			}
+		},
+		"/pioneer/evm/tx/simulate": {
+			"post": {
+				"operationId": "Simulation",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Status Endpoints"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "header",
+						"name": "Authorization",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {}
+						}
+					}
+				}
+			}
+		},
+		"/pioneer/query": {
+			"post": {
+				"operationId": "Query",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Status Endpoints"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "header",
+						"name": "Authorization",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {}
+						}
+					}
+				}
+			}
+		},
+		"/users/{publicAddress}": {
+			"get": {
+				"operationId": "GetUser",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"description": "GET /users",
+				"tags": [
+					"App Store Endpoints"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "publicAddress",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/users/{userId}": {
+			"post": {
+				"operationId": "UpdateDeveloper",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"description": "PATCH /users/:userId",
+				"tags": [
+					"App Store Endpoints"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "header",
+						"name": "Authorization",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {}
+						}
+					}
+				}
+			}
+		},
+		"/apps/{limit}/{skip}": {
+			"get": {
+				"operationId": "ListApps",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"items": {},
+									"type": "array"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"App Store Endpoints"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "limit",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "path",
+						"name": "skip",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			}
+		},
+		"/appsbyName/{name}": {
+			"get": {
+				"operationId": "ListAppsByName",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"tags": [
+					"App Store Endpoints"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "name",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/appsbyApp/{app}": {
+			"get": {
+				"operationId": "ListAppsByApp",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"tags": [
+					"App Store Endpoints"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "app",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/appsbyVersion/{minVersion}/{limit}/{skip}": {
+			"get": {
+				"operationId": "ListAppsByVersion",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"items": {},
+									"type": "array"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"App Store Endpoints"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "minVersion",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"in": "path",
+						"name": "limit",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "path",
+						"name": "skip",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			}
+		},
+		"/appsbyVersionAndAsset/{asset}/{version}/{limit}/{skip}": {
+			"get": {
+				"operationId": "ListAppsByVersionAndAsset",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"tags": [
+					"App Store Endpoints"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "asset",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"in": "path",
+						"name": "version",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"in": "path",
+						"name": "limit",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "path",
+						"name": "skip",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			}
+		},
+		"/spotlight": {
+			"get": {
+				"operationId": "GetSpotlight",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"tags": [
+					"App Store Endpoints"
+				],
+				"security": [],
+				"parameters": []
+			}
+		},
+		"/apps/{developer}": {
+			"get": {
+				"operationId": "ListAppsByDeveloper",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"tags": [
+					"App Store Endpoints"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "developer",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/apps/vote": {
+			"post": {
+				"operationId": "VoteOnApp",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"tags": [
+					"App Store Endpoints"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "header",
+						"name": "Authorization",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {}
+						}
+					}
+				}
+			}
+		},
+		"/apps/update": {
+			"post": {
+				"operationId": "UpdateApp",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"tags": [
+					"App Store Endpoints"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "header",
+						"name": "Authorization",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {}
+						}
+					}
+				}
+			}
+		},
+		"/apps/pending/{limit}/{skip}": {
+			"get": {
+				"operationId": "ListAppsPending",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"tags": [
+					"App Store Endpoints"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "limit",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "path",
+						"name": "skip",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			}
+		},
+		"/apps/revoke": {
+			"post": {
+				"operationId": "RevokeApp",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"tags": [
+					"App Store Endpoints"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "header",
+						"name": "Authorization",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {}
+						}
+					}
+				}
+			}
+		},
+		"/apps/create": {
+			"post": {
+				"operationId": "WhitelistApp",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"tags": [
+					"App Store Endpoints"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "header",
+						"name": "Authorization",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {}
+						}
+					}
+				}
+			}
+		},
+		"/devs/{limit}/{skip}": {
+			"get": {
+				"operationId": "ListDevelopers",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"tags": [
+					"App Store Endpoints"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "limit",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "path",
+						"name": "skip",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			}
+		},
+		"/auth/dev": {
+			"get": {
+				"operationId": "GetDevInfo",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"tags": [
+					"App Store Endpoints"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "header",
+						"name": "Authorization",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/devs/create": {
+			"post": {
+				"operationId": "CreateDeveloper",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"tags": [
+					"App Store Endpoints"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "header",
+						"name": "Authorization",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {}
+						}
+					}
+				}
+			}
+		},
+		"/motd": {
+			"post": {
+				"operationId": "UpdateMOTD",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"description": "POST /users",
+				"tags": [
+					"App Store Endpoints"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {}
+						}
+					}
+				}
+			}
+		},
+		"/devs/register": {
+			"post": {
+				"operationId": "RegisterDeveloper",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"tags": [
+					"App Store Endpoints"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "header",
+						"name": "Authorization",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {}
+						}
+					}
+				}
+			}
+		},
+		"/invoke": {
+			"post": {
+				"operationId": "Invoke",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"description": "Wallet events\n    invocations\n    * Payment requests (pay x address)\n    * sign contract action\n    * Request to install app",
+				"tags": [
+					"Invocation (Payment Requests) Endpoint "
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "header",
+						"name": "Authorization",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {}
+						}
+					}
+				}
+			}
+		},
+		"/fio/accountsFromPubkey/{pubkey}": {
+			"get": {
+				"operationId": "AccountsFromFioPubkey",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"description": "Retrieve accounts for FIO pubkey",
+				"tags": [
+					"Fio Endpoints"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "pubkey",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/fio/getPubkey/{username}": {
+			"get": {
+				"operationId": "GetFioPubkey",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"description": "Retrieve public user info",
+				"tags": [
+					"Fio Endpoints"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "username",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/fio/accountInfo/{username}": {
+			"get": {
+				"operationId": "GetFioAccountInfo",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"description": "Retrieve public user info",
+				"tags": [
+					"Fio Endpoints"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "username",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		}
+	},
+	"servers": [
+		{
+			"url": "https://pioneers.dev/api/v1"
+		}
+	]
+}
