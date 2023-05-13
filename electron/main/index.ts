@@ -123,9 +123,9 @@ ipcMain.handle('open-win', (_, arg) => {
 ipcMain.on('message-from-renderer', async (event, message) => {
   console.log(message); // logs "Hello from the renderer process!"
   const result = await handle_input(message);
-  console.log("result: Main.js: ", result);
-  console.log("result: Main.js: ", typeof(result));
-  console.log("result: Main.js: stdout: ", result.stdout);
-  event.sender.send('result-from-main', result.stdout);
+  // console.log("result: Main.js: ", result);
+  // console.log("result: Main.js: ", typeof(result));
+  // console.log("result: Main.js: stdout: ", result.stdout);
+  // event.sender.send('result-from-main', result.stdout);
 });
 
