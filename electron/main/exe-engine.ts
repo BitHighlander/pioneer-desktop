@@ -189,9 +189,10 @@ const save_skill = async function(skill:any){
             keywords:skill.keywords
         }
         log.info("entry: ",entry)
-        //save to db
-        let saved = await skillsDB.insert(entry)
-        log.info("saved: ",saved)
+        //save to db locally
+
+        //submit to server
+
         return entry
     }catch(e){
         console.error(e)
