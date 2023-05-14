@@ -2,7 +2,7 @@ import { app, BrowserWindow, shell, ipcMain } from 'electron'
 import { release } from 'node:os'
 import { join } from 'node:path'
 import { update } from './update'
-import { handle_input } from './exe-engine';
+import { handle_input, solve_task } from './exe-engine';
 
 // The built directory structure
 //
@@ -119,6 +119,15 @@ ipcMain.handle('open-win', (_, arg) => {
     childWindow.loadFile(indexHtml, { hash: arg })
   }
 })
+
+ipcMain.on('solve-task', async (event, message) => {
+  console.log(message); // logs "Hello from the renderer process!"
+  const result = await solve_task(message);
+  console.log("result: Main.js: ", result);
+  console.log("result: Main.js: ", typeof(result));
+  // console.log("result: Main.js: stdout: ", result.stdout);
+  event.sender.send('result-from-main', "I did a think, solve-task");
+});
 
 ipcMain.on('message-from-renderer', async (event, message) => {
   console.log(message); // logs "Hello from the renderer process!"
