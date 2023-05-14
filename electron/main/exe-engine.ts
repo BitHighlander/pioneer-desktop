@@ -16,6 +16,8 @@ const skillsDB = connection.get('skills')
 const tasksDB = connection.get('tasks')
 // command to execute
 const cmd = 'ls';
+const path = require('path');
+const mkdirp = require('mkdirp');
 
 interface Data {
     query: string
@@ -174,10 +176,10 @@ const save_skill = async function(skill:any){
     let tag = TAG+" | save_skill | "
     try{
         let skillId = "CMD:0.0.1:" + short.generate();
-
-        //readfile
-        let script = fs.readFileSync('./run.sh', 'utf8');
-        log.info("script: ",script)
+        if(!skill.script) throw Error("Invalid result! missing script")
+        if(!skill.summary) throw Error("Invalid result! missing summary")
+        if(!skill.keywords) throw Error("Invalid result! missing keywords")
+        if(!skill.inputs) throw Error("Invalid result! missing keywords")
 
         let entry = {
             created: new Date().getTime(),
@@ -208,38 +210,26 @@ let build_script = async function(objective:any){
             GH_TOKEN:process.env["GH_TOKEN"],
         }
         let contextString = JSON.stringify(context)
-
+        // log.info(tag,"contextString: ",contextString)
         let result = await ai.buildScript(objective, contextString)
         log.info(tag,"result: ",result)
         log.info(tag,"result: ",typeof(result))
-        if(typeof(result) === "string") result = JSON.parse(result)
-        if(!result.script) throw Error("Invalid result! missing script")
-        if(!result.summary) throw Error("Invalid result! missing summary")
-        if(!result.keywords) throw Error("Invalid result! missing keywords")
-        if(!result.inputs) throw Error("Invalid result! missing keywords")
-        if(!result.inputsCount) throw Error("Invalid result! missing inputsCount")
         return result
     }catch(e){
         log.error(e)
     }
 }
 
-let run_command = async function(skillId: string, inputs: any) {
-    let tag = TAG + " | run_command | "
+let perform_skill = async function(skill: any, inputs: any) {
+    let tag = TAG + " | perform_skill | "
     try {
-        //get script by id
-        let command = await skillsDB.findOne({skillId})
-        log.info(tag,"command: ",command)
-        if(!command) throw Error("missing command "+skillId)
-
         //write script to file
-        let writeSuccess = fs.writeFileSync('./run.sh', command.script);
-        log.info(tag, "writeSuccess: ", writeSuccess)
-        //make sure file is executable
-
         let messages = []
         let cmd = "sh run.sh";
 
+        let writeSuccess = fs.writeFileSync('./run.sh', skill.script);
+        log.info(tag, "writeSuccess: ", writeSuccess)
+        //make sure file is executable
         //for each input
         for(let i=0;i<inputs.length;i++){
             let input = inputs[i]
@@ -284,9 +274,10 @@ let run_command = async function(skillId: string, inputs: any) {
                 })
             }
         } catch(e){
+            log.error(tag,"error: ",e)
             messages.push({
                 role: "user",
-                content: command
+                content: "error: ",e
             })
         }
 
@@ -299,44 +290,58 @@ let run_command = async function(skillId: string, inputs: any) {
     }
 }
 
-export async function solve_task(taskId: string): Promise<void> {
+export async function solve_task(input: string): Promise<void> {
     const tag = TAG + " | solve_task | "
     try{
-        console.log(`Solve: ${taskId}`);
+        console.log(`Solve: ${input}`);
+
+        let result = await build_script(input)
+        log.info("result: ",result)
+        let skillSaved = await save_skill(result)
+        log.info("skillSaved: ",skillSaved)
+        //perform solution playbook
+
+        //TODO playbook
+
+        //TODO calculate inputs
+
+        let resultCommand = await perform_skill(skillSaved, [input])
+        log.info("resultCommand: ",resultCommand)
+
 
         //get task
-        let task = await tasksDB.findOne({taskId})
-        log.info("task: ",task)
-
-        //get solutions
-        let solutions = task.solutions
-
-        //TODO related skills
-        let keyword = task.keywords
-        let relatedSkills = await skillsDB.find({keywords:{$any:keyword}})
-        log.info("relatedSkills: ",relatedSkills)
-
-        //power of 10, always 10 solutions
-        if(solutions.length < 10){
-            //TODO use AI to better then random select skills?
-            //select random skill batch
-
-            //for each skill in the solution select inputs
-
-            //create playbook
-                //organize skills that need inputs from skills outpus
-
-            //create new solution
-            let result = await build_script(task.finalGoal)
-            log.info("result: ",result)
-
-            //perform solution playbook
-
-            //TODO playbook
-
-            //
-            run_command(result.skillId, result.inputs)
-        }
+        // let task = await tasksDB.findOne({taskId})
+        // log.info("task: ",task)
+        //
+        // //get solutions
+        // let solutions = task.solutions
+        //
+        // //TODO related skills
+        // let keyword = task.keywords
+        // let relatedSkills = await skillsDB.find({keywords:{$in:keyword}})
+        // log.info("relatedSkills: ",relatedSkills)
+        //
+        // //power of 10, always 10 solutions
+        // if(solutions.length < 10){
+        //     //TODO use AI to better then random select skills?
+        //     //select random skill batch
+        //
+        //     //for each skill in the solution select inputs
+        //
+        //     //create playbook
+        //         //organize skills that need inputs from skills outpus
+        //
+        //     //create new solution
+        //     let result = await build_script(task.finalGoal)
+        //     log.info("result: ",result)
+        //
+        //     //perform solution playbook
+        //
+        //     //TODO playbook
+        //
+        //     //
+        //     run_command(result.skillId, result.inputs)
+        // }
 
 
     }catch(e){
@@ -380,12 +385,12 @@ export async function solve_task(taskId: string): Promise<void> {
 export async function handle_input(input: string): Promise<void> {
     const tag = TAG + " | handle_input | "
     try{
-        console.log(`Received input: ${input}`);
-        let result = await build_task(input)
-        log.info(tag,"result: ",result)
+        // console.log(`Received input: ${input}`);
+        // let result = await build_task(input)
+        // log.info(tag,"result: ",result)
 
         //
-        solve_task(result.taskId)
+        solve_task(input)
 
         // let result = await run_command(input)
         // handle the input here

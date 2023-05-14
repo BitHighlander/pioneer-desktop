@@ -8,7 +8,7 @@ import {
     Button,
     Tabs, TabList, TabPanels, Tab, TabPanel,
     Grid, GridItem,
-    Card, CardHeader, CardBody, CardFooter, Text, Divider
+    Card, CardBody, CardFooter, Text, Divider
 } from '@chakra-ui/react'
 import { useState, useEffect } from 'react';
 import './App.scss';
@@ -88,10 +88,10 @@ function App() {
 
             // Get tasks for user
             // const tasksResponse = await axios.get(`/tasks/${userId}`);
-            const tasksResponse = await axios.get(`/tasks`);
-            const tasks = tasksResponse.data;
-            console.log("tasks",tasks)
-            setTasks(tasks);
+            // const tasksResponse = await axios.get(`/tasks`);
+            // const tasks = tasksResponse.data;
+            // console.log("tasks",tasks)
+            // setTasks(tasks);
 
             //get skills for user
             // const skillsResponse = await axios.get(`/skills`);
@@ -160,9 +160,7 @@ function App() {
                 {/*<GridItem colSpan={2} bg='papayawhip' ></GridItem>*/}
                 <GridItem colSpan={4}  >
                     <Card>
-                        <cardHeader>
-                            <Text> <h2>Do anything 😎</h2></Text>
-                        </cardHeader>
+                            <Text>Do anything 😎</Text>
                         <CardBody>
                             <div className='chat-window'>
                                 {messages.map((message:any, index) => (
@@ -183,13 +181,13 @@ function App() {
                                     }
                                 }} />
                             </div>
-                            <button onClick={() => {
+                            <Button onClick={() => {
                                 const input = document.querySelector('input[type="text"]');
                                 // @ts-ignore
                                 sendMessage(input.value);
                                 // @ts-ignore
                                 input.value = '';
-                            }}>Send</button>
+                            }}>Send</Button>
                         </CardFooter>
                     </Card>
                 </GridItem>
@@ -236,9 +234,9 @@ function App() {
                                                                             </h2>
                                                                             <AccordionPanel pb={4}>
                                                                                 {step.summary}
-                                                                                <Button onClick={() => editStep(task.taskId, step.type)}>Edit Step</Button>
-                                                                                <Button onClick={() => removeStep(task.taskId, step.type)}>Remove Step</Button>
-                                                                                <Button onClick={() => solveStep(task.taskId)}>Solve Task</Button>
+                                                                                {/*<Button onClick={() => editStep(task.taskId, step.type)}>Edit Step</Button>*/}
+                                                                                {/*<Button onClick={() => removeStep(task.taskId, step.type)}>Remove Step</Button>*/}
+                                                                                {/*<Button onClick={() => solveStep(task.taskId)}>Solve Task</Button>*/}
                                                                             </AccordionPanel>
                                                                         </AccordionItem>
                                                                     ))}

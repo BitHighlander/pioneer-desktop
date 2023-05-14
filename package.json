@@ -23,7 +23,7 @@
     "@chakra-ui/react": "^2.5.5",
     "@pioneer-platform/default-mongo": "^8.1.17",
     "@pioneer-platform/loggerdog": "^8.1.18",
-    "@pioneer-platform/pioneer-intelligence": "^8.1.10",
+    "@pioneer-platform/pioneer-intelligence": "8.1.11",
     "electron-updater": "^5.3.0",
     "highlight.js": "^11.7.0",
     "openai": "^3.2.1",
